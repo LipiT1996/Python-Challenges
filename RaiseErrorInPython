@@ -1,0 +1,27 @@
+"""
+Miniature code of python to raise an error.
+"""
+
+class Car:
+    def __init__(self, name, model):
+        self.name = name
+        self.model = model
+    def __repr__(self):
+        return f'<car {self.name} {self.model}'
+
+class Garage:
+    def __init__(self):
+        self.cars = []
+
+    def __len__(self):
+        return len(self.cars)
+
+    def add_cars(self, car):
+        if not isinstance(car, Car):
+            raise TypeError(f'Tried to add cat {car.__class__.__name__} to the garage, but it accepts only car objects')
+        self.cars.append(car)
+
+ford = Garage()
+pp = Car('Ford', 'Fiesta')
+ford.add_cars(pp)
+print(len(ford))
